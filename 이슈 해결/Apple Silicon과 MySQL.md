@@ -24,6 +24,21 @@ mysql:
 # ...생략...
 ```
 
+### 2022.06.17 에 추가한 내용
+
+MySQL 이미지를 다운 받으려고 시도하는 과정에서 m1 칩으로 인한 동일한 문제가 발생했으며, **플랫폼을 명시**하여 해결했다.
+
+추가적으로 컨테이너를 실행할 때도 플랫폼을 명시한다.
+
+```bash
+# MySQL 이미지 다운로드
+docker pull --platform linux/amd64 mysql
+# 컨테이너 실행
+docker run --platform linux/amd64 --name <컨테이너 이름> -e MYSQL_ROOT_PASSWORD=<비밀번호> -d mysql
+```
+
 > **참고**
 >
 > [Docker (Apple Silicon/M1 Preview) MySQL "no matching manifest for linux/arm64/v8 in the manifest list entries"](https://stackoverflow.com/questions/65456814/docker-apple-silicon-m1-preview-mysql-no-matching-manifest-for-linux-arm64-v8)
+>
+> [codinglog.tistory.com](https://codinglog.tistory.com/198?category=1042573)
